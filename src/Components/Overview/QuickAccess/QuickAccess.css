@@ -1,0 +1,8 @@
+.quickAsscessBox {
+    display: flex;
+    flex-direction: 'row';
+}
+
+.accessItem {
+    padding: 25px;
+}
