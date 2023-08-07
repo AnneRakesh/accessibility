@@ -11,7 +11,7 @@ import TransactionDialog from "../../TransactionDialog/TransactionDialog";
 import MovieIcon from "@mui/icons-material/Movie";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
-const QuickAccess = () => {
+const QuickAccess = (props) => {
   let [openDialog, setOpenDialog] = React.useState(false);
   const handleClickOpen = () => {
     setOpenDialog(true);
@@ -49,7 +49,7 @@ const QuickAccess = () => {
           Wallet
         </Button>
       </Stack>
-      <TransactionDialog openDialog={openDialog} handleClose={handleClose} />
+      <TransactionDialog openDialog={openDialog} handleClose={handleClose} getTransactionDate={props.getTransactionDate}/>
     </div>
   );
 };

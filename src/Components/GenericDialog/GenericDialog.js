@@ -9,6 +9,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 
 const GenericDialog = (props) => { 
+  const toFocusRef = React.useRef(null)
+
 
   return (
     <div>
@@ -22,7 +24,7 @@ const GenericDialog = (props) => {
             To upgrading your plan to premium
           </DialogContentText>
           <TextField
-            autoFocus
+            inputRef={toFocusRef}
             margin="dense"
             id="name"
             label="Email Address"

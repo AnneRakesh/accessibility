@@ -9,13 +9,15 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import IconButton from "@mui/material/IconButton";
 
 function TransactionDialog(props) {
-  let [total, setTotal] = React.useState(999);
-  let totalRef = React.useRef();
+  let amountRef = React.useRef(null);
+  let lebalRef = React.useRef(null);
 
-  const numberPicker = () => {
-    let amount = total.current.value;
-    setTotal(amount);
+  const operationHandle = (action) => {
+    let amount = amountRef.current.value;
+    let lebal = lebalRef.current.value;
+    props.getTransactionDate(lebal, Number(amount), action);
   };
+
   return (
     <div>
       <Dialog open={props.openDialog} onClose={props.handleClose}>
@@ -28,21 +30,39 @@ function TransactionDialog(props) {
             type="text"
             fullWidth
             variant="standard"
+            inputRef={lebalRef}
+            // onChnage={}
           />
           <TextField
-            ref={totalRef}
+            inputRef={amountRef}
             id="name"
             label="Amount"
             type="Number"
             variant="standard"
+            // onChnage={}
           />
+          {/* <input type="text" ref={amountRef} /> */}
         </DialogContent>
         <DialogActions>
-          <IconButton aria-label="Add">
-            <AddCircleOutlineIcon onClick={props.handleClose} />
+          <IconButton
+            aria-label="Add"
+            onClick={() => {
+              props.handleClose();
+              operationHandle("add");
+            }}
+          >
+            <AddCircleOutlineIcon />
+            Add
           </IconButton>
-          <IconButton aria-label="Subtract">
-            <RemoveIcon onClick={props.handleClose} />
+          <IconButton
+            aria-label="Subtract"
+            onClick={() => {
+              props.handleClose();
+              operationHandle("sub");
+            }}
+          >
+            <RemoveIcon />
+            Sub
           </IconButton>
         </DialogActions>
       </Dialog>
