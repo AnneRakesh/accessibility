@@ -7,23 +7,23 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-
-const GenericDialog = (props) => { 
-  const toFocusRef = React.useRef(null)
-
+const GenericDialog = (props) => {
+  const toFocusRef = React.useRef(null);
 
   return (
     <div>
       <Dialog open={props.openDialog} onClose={props.handleClose}>
-
         <DialogTitle>Please enter your E-mail</DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{
-            color: "black"
-          }}>
+          <DialogContentText
+            sx={{
+              color: "black",
+            }}
+          >
             To upgrading your plan to premium
           </DialogContentText>
           <TextField
+            autoFocus
             inputRef={toFocusRef}
             margin="dense"
             id="name"
@@ -43,7 +43,6 @@ const GenericDialog = (props) => {
             Submit
           </Button>
         </DialogActions>
-        
       </Dialog>
     </div>
   );

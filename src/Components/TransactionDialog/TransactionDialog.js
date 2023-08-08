@@ -9,8 +9,8 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import IconButton from "@mui/material/IconButton";
 
 function TransactionDialog(props) {
-  let amountRef = React.useRef(null);
-  let lebalRef = React.useRef(null);
+  let amountRef = React.useRef("");
+  let lebalRef = React.useRef("");
 
   const operationHandle = (action) => {
     let amount = amountRef.current.value;
@@ -31,7 +31,6 @@ function TransactionDialog(props) {
             fullWidth
             variant="standard"
             inputRef={lebalRef}
-            // onChnage={}
           />
           <TextField
             inputRef={amountRef}
@@ -46,6 +45,9 @@ function TransactionDialog(props) {
         <DialogActions>
           <IconButton
             aria-label="Add"
+            style={{
+              border: "1px solid black",
+            }}
             onClick={() => {
               props.handleClose();
               operationHandle("add");
@@ -56,6 +58,9 @@ function TransactionDialog(props) {
           </IconButton>
           <IconButton
             aria-label="Subtract"
+            style={{
+              border: "1px solid black",
+            }}
             onClick={() => {
               props.handleClose();
               operationHandle("sub");

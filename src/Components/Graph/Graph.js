@@ -1,12 +1,12 @@
 import React from "react";
-import GraphPhoto from "../../Assests/Graph.png";
+import GraphImage from "../../Assests/Color.png";
 
 const Graph = () => {
   return (
     <div style={{
-      paddingTop: '20px',
+      paddingTop: '35px',
     }}>
-      <img src={GraphPhoto} alt="Graph Image showing Expense and Income" />
+      <img src={GraphImage} alt="Graph Image showing Expense and Income" />
     </div>
   );
 };

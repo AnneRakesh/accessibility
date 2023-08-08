@@ -4,10 +4,11 @@
 
 .mainContainer {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-right: 140px;
 }
 
-.right {
-  padding-top: 5px;
-  width: 350px;
+
+.left {
+  padding-left: 60px;
 }

@@ -20,9 +20,9 @@ const QuickAccess = (props) => {
     setOpenDialog(false);
   };
   return (
-    <div>
+    <div className="quickAccess">
       <h2> Quick Access</h2>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={3}>
         <Button
           size="medium"
           onClick={handleClickOpen}

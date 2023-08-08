@@ -7,21 +7,20 @@ const TransactionCard = (props) => {
   return (
     <div>
       <h2> Recent Transactions</h2>
-
-      {props.transanctionArr.map((El) => {
+      {props.transanctionArr.map((transaction) => {
         return (
           <div
-            className="conetent"
-            key={El[1]}
-            style={{ backgroundColor: El[2] === "add" ? "#C8E4B2" : "#EF6262" }}
+            className="content"
+            key={transaction[1]}
+            style={{ backgroundColor: transaction[2] === "add" ? "#C8E4B2" : "#EF6262" }}
           >
-            {El[2] === "add" ? (
+            {transaction[2] === "add" ? (
               <AddBoxIcon fontSize="large" />
             ) : (
               <IndeterminateCheckBoxIcon fontSize="large" />
             )}
-            <h4>{El[0]}</h4>
-            <h4>{El[1]}$</h4>
+            <h4>{transaction[0]}</h4>
+            <h4>{transaction[1]}$</h4>
           </div>
         );
       })}

@@ -9,14 +9,17 @@ import Snackbar from "@mui/material/Snackbar";
 import SearchIcon from "@mui/icons-material/Search";
 import BalanceCard from "../Balance/Balance";
 import TransactionCard from "../../Components/Overview/TransactionCard/TransactionCard";
+import Typography from "@mui/material/Typography";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const Overview = () => {
-  let [total, setTotal] = React.useState(0);
-  let [transanctionArr, setTransanctionArr] = React.useState([])
+  let [total, setTotal] = React.useState(992.04);
+  let [transanctionArr, setTransanctionArr] = React.useState([
+    ["Power Bill", 220.1, "add"],
+  ]);
   let [openDialog, setOpenDialog] = React.useState(false);
   let [openSnack, setOpenSnack] = React.useState(false);
   const handleClickOpen = () => {
@@ -37,8 +40,10 @@ const Overview = () => {
     let newValue =
       action === "add" ? Number(total) + Number(amount) : total - amount;
     setTotal(newValue);
-    setTransanctionArr(Previewstate => [...Previewstate, [label, amount, action]]);
-    console.log(transanctionArr)
+    setTransanctionArr((previewstate) => [
+      ...previewstate,
+      [label, amount, action],
+    ]);
   };
 
   return (
@@ -63,8 +68,24 @@ const Overview = () => {
           </div>
           <div className="box">
             <div className="">
-              <h3>Get Exclusive Discounts for any payment method</h3>
-              <h4>By upgrading your plan to premium</h4>
+              <Typography sx={{
+                  fontWeight: "400",
+                  fontSize: "1.50rem",
+                }}
+                variant="h2" color="antiquewhite">
+                Get Exclusive discounts for any payment Method
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: "400",
+                  fontSize: "1.1rem",
+                  marginTop: "5px",
+                }}
+                variant="h3"
+                color="antiquewhite"
+              >
+                By upgrading your plan to premium
+              </Typography>
             </div>
             <Button
               variant="outlined"
@@ -87,7 +108,7 @@ const Overview = () => {
         </div>
         <div className="balance">
           <BalanceCard total={total} />
-          <TransactionCard transanctionArr={transanctionArr}/>
+          <TransactionCard transanctionArr={transanctionArr} />
         </div>
       </div>
 

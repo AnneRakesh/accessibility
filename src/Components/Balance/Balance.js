@@ -11,14 +11,23 @@ function BalanceCard(props) {
       <Card sx={{ width: 500, backgroundColor: "#515dc3" }}>
         <CardActionArea>
           <CardContent>
-            <Typography gutterBottom variant="h4" color="antiquewhite">
+            <Typography
+              sx={{
+                fontWeight: "400",
+                fontSize: "2.2rem",
+              }}
+              variant="h2"
+              color="antiquewhite"
+            >
               Bank of America
             </Typography>
             <Typography
-              variant="body3"
+              variant="h3"
               color="antiquewhite"
               sx={{
-                padding: "5px",
+                marginTop: "10px",
+                fontWeight: "400",
+                fontSize: "1rem",
               }}
             >
               Balance:
@@ -27,7 +36,7 @@ function BalanceCard(props) {
               variant="h4"
               color="antiquewhite"
               sx={{
-                padding: "5px",
+                marginTop: "10px",
               }}
             >
               ${props.total}
