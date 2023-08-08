@@ -19,7 +19,7 @@ const TransactionCard = (props) => {
             ) : (
               <IndeterminateCheckBoxIcon fontSize="large" />
             )}
-            <h4>{transaction[0]}</h4>
+            <h3>{transaction[0]}</h3>
             <h4>{transaction[1]}$</h4>
           </div>
         );

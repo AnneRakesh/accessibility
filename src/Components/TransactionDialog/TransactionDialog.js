@@ -31,6 +31,7 @@ function TransactionDialog(props) {
             fullWidth
             variant="standard"
             inputRef={lebalRef}
+            required
           />
           <TextField
             inputRef={amountRef}
@@ -38,7 +39,7 @@ function TransactionDialog(props) {
             label="Amount"
             type="Number"
             variant="standard"
-            // onChnage={}
+            required
           />
           {/* <input type="text" ref={amountRef} /> */}
         </DialogContent>

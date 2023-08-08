@@ -3,7 +3,7 @@ import Overview from "./Components/Overview/Overview";
 import Navbar from "./Components/Navbar/Navbar";
 function App() {
   return (
-    <div className="App">
+    <div className="App" role="main">
       <div className="mainContainer">
         <div className="left">
           <Navbar />
