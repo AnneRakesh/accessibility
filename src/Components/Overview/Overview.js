@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import BalanceCard from "../Balance/Balance";
 import TransactionCard from "../../Components/Overview/TransactionCard/TransactionCard";
 import Typography from "@mui/material/Typography";
+import moment from "moment";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -18,7 +19,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const Overview = () => {
   let [total, setTotal] = React.useState(992.04);
   let [transanctionArr, setTransanctionArr] = React.useState([
-    ["Power Bill", 220.1, "add"],
+    ["Power Bill", 220.1, "add", moment().format('MMMM Do YYYY, h:mm:ss a')],
   ]);
   let [openDialog, setOpenDialog] = React.useState(false);
   let [openSnack, setOpenSnack] = React.useState(false);
@@ -36,13 +37,13 @@ const Overview = () => {
     setOpenSnack(false);
   };
 
-  const getTransactionDate = (label, amount, action) => {
+  const getTransactionDate = (label, amount, action, timeStamp) => {
     let newValue =
       action === "add" ? Number(total) + Number(amount) : total - amount;
-    setTotal(newValue);
+    setTotal(newValue.toFixed(2));
     setTransanctionArr((previewstate) => [
       ...previewstate,
-      [label, amount, action],
+      [label, amount, action, timeStamp],
     ]);
   };
 

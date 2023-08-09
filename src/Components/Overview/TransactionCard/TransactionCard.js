@@ -12,14 +12,22 @@ const TransactionCard = (props) => {
           <div
             className="content"
             key={transaction[1]}
-            style={{ backgroundColor: transaction[2] === "add" ? "#C8E4B2" : "#EF6262" }}
+            style={{
+              backgroundColor: transaction[2] === "add" ? "#C8E4B2" : "#E97777",
+            }}
           >
             {transaction[2] === "add" ? (
               <AddBoxIcon fontSize="large" />
             ) : (
               <IndeterminateCheckBoxIcon fontSize="large" />
             )}
-            <h3>{transaction[0]}</h3>
+            <div>
+              <h3>{transaction[0]}</h3>
+              <p style={{
+                marginTop: '-18px',
+                color: '#272829',
+              }}>{transaction[3]}</p>
+            </div>
             <h4>{transaction[1]}$</h4>
           </div>
         );

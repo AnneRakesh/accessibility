@@ -8,11 +8,25 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const GenericDialog = (props) => {
+  let [isError, setIsError] = React.useState(false)
   const toFocusRef = React.useRef(null);
+
+  const checkforValue = () => {
+    if (toFocusRef.current.value === undefined || toFocusRef.current.value === "") {
+      setIsError(true)
+      return false;
+    } else {
+      return true
+    }
+  }
 
   return (
     <div>
-      <Dialog open={props.openDialog} onClose={props.handleClose}>
+      <Dialog open={props.openDialog} onClose={() => {
+        props.handleClose()
+        setIsError(false)
+      }
+        }>
         <DialogTitle>Please enter your E-mail</DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -23,6 +37,7 @@ const GenericDialog = (props) => {
             To upgrading your plan to premium
           </DialogContentText>
           <TextField
+          error={isError}
             autoFocus
             inputRef={toFocusRef}
             margin="dense"
@@ -36,8 +51,12 @@ const GenericDialog = (props) => {
         <DialogActions>
           <Button
             onClick={() => {
-              props.OpenSnackbar();
-              props.handleClose();
+              // checkforValue() && props.OpenSnackbar(); props.handleClose();
+              if (checkforValue()) {
+                props.OpenSnackbar(); 
+                props.handleClose();
+                setIsError(false)
+              }
             }}
           >
             Submit

@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import "./Balance.css"
 
 function BalanceCard(props) {
   return (
@@ -11,6 +12,7 @@ function BalanceCard(props) {
       <Card sx={{ width: 500, backgroundColor: "#515dc3" }}>
         <CardActionArea>
           <CardContent>
+            <div className="topElements">
             <Typography
               sx={{
                 fontWeight: "400",
@@ -21,6 +23,17 @@ function BalanceCard(props) {
             >
               Bank of America
             </Typography>
+            <Typography
+              sx={{
+                fontWeight: "400",
+                fontSize: "1.75rem",
+              }}
+              variant="h2"
+              color="antiquewhite"
+            >
+              Visa
+            </Typography>
+            </div>
             <Typography
               variant="h3"
               color="antiquewhite"

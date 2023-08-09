@@ -7,23 +7,53 @@ import DialogTitle from "@mui/material/DialogTitle";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import IconButton from "@mui/material/IconButton";
+import moment from "moment";
 
 function TransactionDialog(props) {
+  let [lebalError, setLebaleError] = React.useState(false);
+  let [amountError, setAmountError] = React.useState(false);
   let amountRef = React.useRef("");
   let lebalRef = React.useRef("");
 
-  const operationHandle = (action) => {
+  const operationHandle = (action, timeStamp) => {
     let amount = amountRef.current.value;
     let lebal = lebalRef.current.value;
-    props.getTransactionDate(lebal, Number(amount), action);
+    props.getTransactionDate(lebal, Number(amount), action, timeStamp);
+  };
+
+  const checkForValuesForlebal = () => {
+    let lebal = lebalRef.current.value;
+    if (lebal === "") {
+      setLebaleError(true);
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const checkForValuesForAmount = () => {
+    let amount = amountRef.current.value;
+    if (amount === "") {
+      setAmountError(true);
+      return false;
+    } else {
+      return true;
+    }
   };
 
   return (
     <div>
-      <Dialog open={props.openDialog} onClose={props.handleClose}>
+      <Dialog
+        open={props.openDialog}
+        onClose={() => {
+          props.handleClose();
+          setLebaleError(false);
+          setAmountError(false);
+        }}
+      >
         <DialogTitle>Make a Transaction</DialogTitle>
         <DialogContent>
           <TextField
+            error={lebalError}
             autoFocus
             id="name"
             label="Transaction Label"
@@ -34,6 +64,7 @@ function TransactionDialog(props) {
             required
           />
           <TextField
+            error={amountError}
             inputRef={amountRef}
             id="name"
             label="Amount"
@@ -41,34 +72,43 @@ function TransactionDialog(props) {
             variant="standard"
             required
           />
-          {/* <input type="text" ref={amountRef} /> */}
         </DialogContent>
         <DialogActions>
           <IconButton
-            aria-label="Add"
+            aria-label="Credit"
             style={{
               border: "1px solid black",
             }}
             onClick={() => {
-              props.handleClose();
-              operationHandle("add");
+              let time = moment().format("MMMM Do YYYY, h:mm:ss a");
+              if (checkForValuesForlebal() && checkForValuesForAmount()) {
+                props.handleClose();
+                operationHandle("add", time);
+                setLebaleError(false);
+                setAmountError(false);
+              }
             }}
           >
             <AddCircleOutlineIcon />
-            Add
+            Credit
           </IconButton>
           <IconButton
-            aria-label="Subtract"
+            aria-label="Debit"
             style={{
               border: "1px solid black",
             }}
             onClick={() => {
-              props.handleClose();
-              operationHandle("sub");
+              if (checkForValuesForAmount() && checkForValuesForlebal()) {
+                let time = moment().format("MMMM Do YYYY, h:mm:ss a");
+                props.handleClose();
+                operationHandle("sub", time.toString());
+                setLebaleError(false);
+                setAmountError(false);
+              }
             }}
           >
             <RemoveIcon />
-            Sub
+            Debit
           </IconButton>
         </DialogActions>
       </Dialog>
