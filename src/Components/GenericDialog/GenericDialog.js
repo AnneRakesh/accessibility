@@ -8,26 +8,29 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 const GenericDialog = (props) => {
-  let [isError, setIsError] = React.useState(false)
+  let [isError, setIsError] = React.useState(false);
   const toFocusRef = React.useRef(null);
 
   const checkforValue = () => {
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!mailformat.test(toFocusRef.current.value))  {
-      setIsError(true)
+    let email = toFocusRef.current.value;
+    if (!mailformat.test(email)) {
+      setIsError(true);
       return false;
     } else {
-      return true
+      return true;
     }
-  }
+  };
 
   return (
     <div>
-      <Dialog open={props.openDialog} onClose={() => {
-        props.handleClose()
-        setIsError(false)
-      }
-        }>
+      <Dialog
+        open={props.openDialog}
+        onClose={() => {
+          props.handleClose();
+          setIsError(false);
+        }}
+      >
         <DialogTitle>Please enter your E-mail</DialogTitle>
         <DialogContent>
           <DialogContentText
@@ -38,7 +41,7 @@ const GenericDialog = (props) => {
             To upgrading your plan to premium
           </DialogContentText>
           <TextField
-          error={isError}
+            error={isError}
             autoFocus
             inputRef={toFocusRef}
             margin="dense"
@@ -54,9 +57,9 @@ const GenericDialog = (props) => {
             onClick={() => {
               // checkforValue() && props.OpenSnackbar(); props.handleClose();
               if (checkforValue()) {
-                props.OpenSnackbar(); 
+                props.OpenSnackbar();
                 props.handleClose();
-                setIsError(false)
+                setIsError(false);
               }
             }}
           >
