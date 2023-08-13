@@ -12,7 +12,8 @@ const GenericDialog = (props) => {
   const toFocusRef = React.useRef(null);
 
   const checkforValue = () => {
-    if (toFocusRef.current.value === undefined || toFocusRef.current.value === "") {
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!mailformat.test(toFocusRef.current.value))  {
       setIsError(true)
       return false;
     } else {

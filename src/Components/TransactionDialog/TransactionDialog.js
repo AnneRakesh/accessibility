@@ -32,7 +32,8 @@ function TransactionDialog(props) {
   };
   const checkForValuesForAmount = () => {
     let amount = amountRef.current.value;
-    if (amount === "") {
+    let nonNegitieInteger = /^([^.0-]\d+|\d)$/
+    if (amount === "" || !nonNegitieInteger.test(amount) || amount === "0") {
       setAmountError(true);
       return false;
     } else {
