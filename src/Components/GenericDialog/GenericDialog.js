@@ -6,6 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Axios from "axios";
 
 const GenericDialog = (props) => {
   let [isError, setIsError] = React.useState(false);
@@ -18,6 +19,9 @@ const GenericDialog = (props) => {
       setIsError(true);
       return false;
     } else {
+      Axios.post("/subscibeEmail", { email: email })
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err.response));
       return true;
     }
   };

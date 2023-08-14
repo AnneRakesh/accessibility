@@ -11,6 +11,7 @@ import BalanceCard from "../Balance/Balance";
 import TransactionCard from "../../Components/Overview/TransactionCard/TransactionCard";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
+import Axios from "axios";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -19,7 +20,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const Overview = () => {
   let [total, setTotal] = React.useState(992.04);
   let [transanctionArr, setTransanctionArr] = React.useState([
-    ["Power Bill", 220.1, "add", moment().format('MMMM Do YYYY, h:mm:ss a')],
+    ["Power Bill", 220.1, "add", moment().format("MMMM Do YYYY, h:mm:ss a")],
   ]);
   let [openDialog, setOpenDialog] = React.useState(false);
   let [openSnack, setOpenSnack] = React.useState(false);
@@ -45,6 +46,18 @@ const Overview = () => {
       ...previewstate,
       [label, amount, action, timeStamp],
     ]);
+    let payload = {
+      amount: amount,
+      label: label,
+      type: action === "add" ? "Credit" : "Debit",
+    };
+    Axios.post("http://localhost:5000/transaction", payload)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -70,11 +83,14 @@ const Overview = () => {
           </div>
           <div className="box">
             <div className="">
-              <Typography sx={{
+              <Typography
+                sx={{
                   fontWeight: "400",
                   fontSize: "1.50rem",
                 }}
-                variant="h2" color="antiquewhite">
+                variant="h2"
+                color="antiquewhite"
+              >
                 Get Exclusive discounts for any payment Method
               </Typography>
               <Typography
