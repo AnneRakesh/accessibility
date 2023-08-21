@@ -33,7 +33,7 @@ function BalanceCard(props) {
                       fontWeight: "400",
                       fontSize: "2.2rem",
                     }}
-                    variant="h2"
+                    variant="h3"
                     color="antiquewhite"
                   >
                     Bank of America
@@ -43,7 +43,7 @@ function BalanceCard(props) {
                       fontWeight: "400",
                       fontSize: "1.75rem",
                     }}
-                    variant="h2"
+                    variant="h4"
                     color="antiquewhite"
                   >
                     Visa
@@ -51,7 +51,7 @@ function BalanceCard(props) {
                 </div>
                 <div className="bottomElements">
                   <Typography
-                    variant="h3"
+                    variant="h5"
                     color="antiquewhite"
                     sx={{
                       // marginTop: "10px",
@@ -62,7 +62,7 @@ function BalanceCard(props) {
                     Balance:
                   </Typography>
                   <Typography
-                    variant="h4"
+                    variant="h6"
                     color="antiquewhite"
                     sx={{
                       // marginTop: "10px",
@@ -85,7 +85,7 @@ function BalanceCard(props) {
                       fontWeight: "400",
                       fontSize: "2.2rem",
                     }}
-                    variant="h2"
+                    variant="h3"
                     color="##212528"
                   >
                     Bank of India
@@ -95,7 +95,7 @@ function BalanceCard(props) {
                       fontWeight: "400",
                       fontSize: "1.75rem",
                     }}
-                    variant="h2"
+                    variant="h4"
                     color="##212528"
                   >
                     Master
@@ -103,7 +103,7 @@ function BalanceCard(props) {
                     </div>
                   <div className="bottomElements">
                     <Typography
-                      variant="h3"
+                      variant="h5"
                       color="##212528"
                       sx={{
                         marginTop: "10px",
@@ -114,7 +114,7 @@ function BalanceCard(props) {
                       Balance:
                     </Typography>
                     <Typography
-                      variant="h4"
+                      variant="h6"
                       color="##212528"
                       sx={{
                         marginTop: "10px",

@@ -69,3 +69,7 @@
   line-height: 40px;
   width: 0px;
 }
+
+.search-text:focus {
+  border: #515dc3 solid linen;
+}
