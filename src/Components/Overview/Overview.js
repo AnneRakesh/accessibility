@@ -70,8 +70,9 @@ const Overview = () => {
               className="search-text"
               type="text"
               placeholder="Search Anything"
-              tabIndex="-1"
+              // tabIndex="-1"
               aria-label="Type anything you want to search"
+              // onFocus={}
             />
             <a
               href="test"

@@ -28,12 +28,19 @@
   padding: 10px;
 }
 
-.search-box:hover > .search-text {
+.search-box:hover > .search-text,
+.search-box:focus > .search-text {
   width: 240px;
   padding: 0 6px;
 }
 
-.search-box:hover > .search-btn {
+.search-text:focus {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search-box:hover > .search-btn,
+.search-box:focus > .search-btn {
   background: white;
   color: black;
 }
@@ -70,6 +77,6 @@
   width: 0px;
 }
 
-.search-text:focus {
+/* .search-text:focus {
   border: #515dc3 solid linen;
-}
+} */
